@@ -1,0 +1,17 @@
+.App {
+  display: grid;
+  height: 100vh;
+  grid-template-rows: 8% 92%;
+  grid-template-areas:
+    "header header "
+    "algo algo ";
+}
+
+.header-container {
+  grid-area: header;
+  background-color: red;
+}
+
+.algosection {
+  grid-area: algo;
+}
