@@ -1,7 +1,6 @@
 import React from "react";
 import styles from "./App.module.scss";
 import HeaderContainer from "./containers/HeaderContainer";
-import AlgoContainer from "./containers/AlgoContainer";
 import "antd/dist/antd.css";
 
 function App() {
@@ -11,7 +10,7 @@ function App() {
         <HeaderContainer />
       </div>
       <div className={styles["algosection"]}>
-        <AlgoContainer />
+        <h1>Algo section</h1>
       </div>
     </div>
   );
