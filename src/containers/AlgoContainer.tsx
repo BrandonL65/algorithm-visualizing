@@ -1,10 +1,11 @@
 import React from "react";
+import GraphComponent from "../components/GraphComponent/GraphComponent";
 
 const AlgoContainer = () => {
   return (
-    <div>
-      <h1>Algo Container</h1>
-    </div>
+    <>
+      <GraphComponent />
+    </>
   );
 };
 
