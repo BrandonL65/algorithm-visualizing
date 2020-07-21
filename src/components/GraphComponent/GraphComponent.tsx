@@ -21,5 +21,4 @@ const GraphComponent = observer(() => {
   );
 });
 
-//bad commit 1
 export default GraphComponent;
