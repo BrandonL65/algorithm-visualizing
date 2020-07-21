@@ -20,5 +20,5 @@ const GraphComponent = observer(() => {
     </div>
   );
 });
-hi;
+
 export default GraphComponent;
