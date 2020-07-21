@@ -22,4 +22,5 @@ const GraphComponent = observer(() => {
 });
 
 //bad commit 1
+//bad commit 2
 export default GraphComponent;
