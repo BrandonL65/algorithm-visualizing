@@ -10,11 +10,13 @@ const ButtonsContainer = observer(() => {
     bubbleSortArray,
     slowDown,
     speedUp,
+    isAlreadySorting,
+    stopAlgo,
   } = algoStore;
 
   const handleSort = () => {
     const { selectedAlgorithm } = algoStore;
-    if (selectedAlgorithm === "Bubble Sort") {
+    if (selectedAlgorithm === "Bubble Sort" && !isAlreadySorting) {
       bubbleSortArray();
     }
   };
@@ -26,7 +28,7 @@ const ButtonsContainer = observer(() => {
         slowDown={() => slowDown()}
         speedUp={() => speedUp()}
         sort={() => handleSort()}
-        stop={() => (algoStore.stopPressed = true)}
+        stop={() => stopAlgo()}
       />
     </>
   );

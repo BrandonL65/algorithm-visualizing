@@ -5,7 +5,9 @@ export default class AlgoStore {
   @observable graphHeights: number[] = [];
   @observable delaySpeed: number = 100;
   @observable stopPressed: boolean = false;
+  //loopIndex used to show which bar to highlight visually (current bar will be diff color)
   @observable loopIndex: number = 0;
+  @observable isAlreadySorting: boolean = false;
 
   @action scrambleGraphHeights = () => {
     let newGraphHeights = this.graphHeights.slice();
@@ -16,20 +18,18 @@ export default class AlgoStore {
   };
 
   @action bubbleSortArray = async () => {
-    this.stopPressed = false;
-    this.delaySpeed = 100;
-
+    this.startAlgo();
     let newGraphHeights = this.graphHeights.slice();
 
     for (let i = 0; i < newGraphHeights.length; i++) {
-      for (let j = 0; j < newGraphHeights.length; j++) {
+      for (let j = 0; j < newGraphHeights.length - i; j++) {
         if (this.stopPressed) {
           return;
         }
-
         await delay(this.delaySpeed);
         let firstVal = newGraphHeights[j];
         let secondVal = newGraphHeights[j + 1];
+        this.loopIndex = j;
         if (firstVal >= secondVal) {
           newGraphHeights[j + 1] = firstVal;
           newGraphHeights[j] = secondVal;
@@ -37,6 +37,7 @@ export default class AlgoStore {
         }
       }
     }
+    this.stopAlgo();
   };
 
   @action slowDown = () => {
@@ -46,6 +47,15 @@ export default class AlgoStore {
     if (this.delaySpeed > 2) {
       this.delaySpeed = this.delaySpeed - 15;
     }
+  };
+  @action stopAlgo = (): void => {
+    this.stopPressed = true;
+    this.isAlreadySorting = false;
+  };
+  @action startAlgo = (): void => {
+    this.stopPressed = false;
+    this.isAlreadySorting = true;
+    this.delaySpeed = 100;
   };
 }
 

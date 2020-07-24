@@ -5,12 +5,26 @@ import { useAlgoStore } from "../../contexts";
 
 const GraphComponent = observer(() => {
   const algoStore = useAlgoStore();
-  const { graphHeights } = algoStore;
+  const { graphHeights, loopIndex } = algoStore;
 
-  let allDivs = graphHeights.map((height) => {
-    return (
-      <div style={{ height: height }} className={styles["mini-div"]}></div>
-    );
+  let allDivs = graphHeights.map((height, idx) => {
+    if (idx === loopIndex || idx === loopIndex + 1) {
+      return (
+        <div
+          key={idx}
+          style={{ height: height }}
+          className={styles["highlighted-mini-div"]}
+        ></div>
+      );
+    } else {
+      return (
+        <div
+          key={idx}
+          style={{ height: height }}
+          className={styles["mini-div"]}
+        ></div>
+      );
+    }
   });
 
   return (
