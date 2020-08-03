@@ -8,21 +8,26 @@ const GraphComponent = observer(() => {
   const { graphHeights, loopIndex } = algoStore;
 
   let allDivs = graphHeights.map((height, idx) => {
+    let heightDisplayed = height > 5 ? height : null;
     if (idx === loopIndex || idx === loopIndex + 1) {
       return (
         <div
           key={idx}
-          style={{ height: height }}
+          style={{ height: `${height}%` }}
           className={styles["highlighted-mini-div"]}
-        ></div>
+        >
+          <p className={styles["height-text-selected"]}>{heightDisplayed}</p>
+        </div>
       );
     } else {
       return (
         <div
           key={idx}
-          style={{ height: height }}
+          style={{ height: `${height}%` }}
           className={styles["mini-div"]}
-        ></div>
+        >
+          <p className={styles["height-text"]}>{heightDisplayed}</p>
+        </div>
       );
     }
   });

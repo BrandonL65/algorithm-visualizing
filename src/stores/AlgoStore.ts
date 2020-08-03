@@ -11,8 +11,8 @@ export default class AlgoStore {
 
   @action scrambleGraphHeights = () => {
     let newGraphHeights = this.graphHeights.slice();
-    for (let i = 0; i < 60; i++) {
-      newGraphHeights[i] = Math.floor(Math.random() * 500);
+    for (let i = 0; i < 40; i++) {
+      newGraphHeights[i] = Math.floor(Math.random() * 100);
     }
     this.graphHeights = newGraphHeights;
   };
@@ -22,7 +22,7 @@ export default class AlgoStore {
     let newGraphHeights = this.graphHeights.slice();
 
     for (let i = 0; i < newGraphHeights.length; i++) {
-      for (let j = 0; j < newGraphHeights.length - i; j++) {
+      for (let j = 0; j < newGraphHeights.length - i - 1; j++) {
         if (this.stopPressed) {
           return;
         }
@@ -31,9 +31,12 @@ export default class AlgoStore {
         let secondVal = newGraphHeights[j + 1];
         this.loopIndex = j;
         if (firstVal >= secondVal) {
-          newGraphHeights[j + 1] = firstVal;
+          console.log("FOUND smaller");
+          await delay(this.delaySpeed * 3);
           newGraphHeights[j] = secondVal;
+          newGraphHeights[j + 1] = firstVal;
           this.graphHeights = newGraphHeights;
+          await delay(this.delaySpeed);
         }
       }
     }

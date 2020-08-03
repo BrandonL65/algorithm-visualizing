@@ -22,5 +22,19 @@
 .highlighted-mini-div {
   width: 10%;
   border: 1px solid black;
-  background-color: blue;
+  background-color: pink;
+  transition: 0.02s;
+}
+
+.height-text {
+  text-align: center;
+  color: green;
+  font-weight: 500;
+}
+
+.height-text-selected {
+  text-align: center;
+  color: green;
+  font-weight: 800;
+  font-size: 1.2rem;
 }
